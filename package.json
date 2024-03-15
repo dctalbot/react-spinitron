@@ -4,13 +4,13 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Spinitron API client",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:cjs": "esbuild src/index.ts --format=cjs --outfile=lib/index.cjs",
+    "build:cjs": "esbuild src/index.ts --format=cjs --packages=external --bundle --outfile=lib/index.cjs",
     "build:dts": "tsc",
-    "build:esm": "esbuild src/index.ts --format=esm --outfile=lib/index.mjs",
+    "build:esm": "esbuild src/index.ts --format=esm --packages=external --bundle --outfile=lib/index.mjs",
     "build": "npm run build:cjs && npm run build:dts && npm run build:esm",
     "prepack": "npm run build"
   },

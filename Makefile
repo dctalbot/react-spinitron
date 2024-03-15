@@ -5,6 +5,13 @@ check:
 	npx eslint . --fix
 	npx vitest --run
 
+.PHONY: build
+build: 
+	npm run build
+
+.PHONY: publish
+publish: 
+	npm publish --access public
 
 .PHONY: generate
 generate: 
