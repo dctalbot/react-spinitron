@@ -24,11 +24,20 @@ function App() {
 
 ```tsx
 function MyComponent() {
-  // get playlist spins every 10 seconds
-  const spins = useSpins({ playlist_id: 123 }, { refetchInterval: 10000 });
+  // get Spins for Playlist #123 every 10 seconds
+  const { data, error, isFetching } = useSpins(
+    { playlist_id: 123 },
+    { refetchInterval: 10000 },
+  );
+
+  const listdata = (data?.pages ?? []).map((page) => page.items).flat();
+
+  if (error) return <div>Error</div>;
+  if (isFetching) return <div>Loading...</div>;
+
   return (
     <div>
-      {spins.map((spin) => (
+      {listdata.map((spin) => (
         <p key={spin.id}>
           {spin.song} by {spin.artist}
         </p>
@@ -40,14 +49,14 @@ function MyComponent() {
 
 Hooks include:
 
-- `usePersona`
-- `usePersonas`
-- `usePlaylist`
-- `usePlaylists`
-- `useShow`
-- `useShows`
-- `useSpin`
-- `useSpins`
+- `usePersona(requestParams, queryOptions)`
+- `usePersonas(requestParams, queryOptions)`
+- `usePlaylist(requestParams, queryOptions)`
+- `usePlaylists(requestParams, queryOptions)`
+- `useShow(requestParams, queryOptions)`
+- `useShows(requestParams, queryOptions)`
+- `useSpin(requestParams, queryOptions)`
+- `useSpins(requestParams, queryOptions)`
 
 ## Related Projects
 
