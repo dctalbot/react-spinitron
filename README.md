@@ -4,6 +4,12 @@
 - It supports all [Spinitron v2 API GET request endpoints](https://spinitron.github.io/v2api/).
 - It wraps `@tanstack/react-query`, and the [documentation](https://tanstack.com/query/latest) for that largely applies here too.
 
+## Installation
+
+```
+npm install @dctalbot/react-spinitron
+```
+
 ## Example
 
 `App.tsx`
