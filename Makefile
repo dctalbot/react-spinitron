@@ -8,4 +8,4 @@ check:
 
 .PHONY: generate
 generate: 
-	npx openapi-typescript ./src/api/openapi.yaml -o ./src/api/openapi-types.ts
+	npx openapi-typescript ./src/openapi.yaml -o ./src/openapi-types.ts
