@@ -1,0 +1,37 @@
+{
+  "name": "react-spinitron",
+  "private": false,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A Spinitron API client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dctalbot/react-spinitron.git"
+  },
+  "keywords": [
+    "spinitron"
+  ],
+  "author": "dctalbot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dctalbot/react-spinitron/issues"
+  },
+  "homepage": "https://github.com/dctalbot/react-spinitron#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0",
+    "openapi-typescript": "^6.7.5",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.2.0",
+    "vitest": "^1.3.1"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5"
+  }
+}
