@@ -15,6 +15,9 @@ npm install @dctalbot/react-spinitron
 `App.tsx`
 
 ```tsx
+import { ApiClientProvider } from "@dctalbot/react-spinitron";
+import { MyComponent } from "./MyComponent";
+
 const API_BASE_URL = "https://my-spinitron-proxy.com/api";
 
 function App() {
@@ -29,7 +32,9 @@ function App() {
 `MyComponent.tsx`
 
 ```tsx
-function MyComponent() {
+import { useSpins } from "@dctalbot/react-spinitron";
+
+export function MyComponent() {
   // get Spins for Playlist #123 every 10 seconds
   const { data, error, isFetching } = useSpins(
     { playlist_id: 123 },
