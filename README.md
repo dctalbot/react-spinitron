@@ -50,7 +50,7 @@ export function MyComponent() {
     { refetchInterval: 10000 },
   );
 
-  const listdata = (data?.pages ?? []).map((page) => page.items).flat();
+  const listdata = data ?? [];
 
   if (error) return <div>Error</div>;
   if (isFetching) return <div>Loading...</div>;
