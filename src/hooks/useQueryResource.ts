@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { useBaseURL } from "../provider/ApiProvider";
 import { buildQueryString } from "../util/buildQueryString";
 
@@ -6,14 +6,12 @@ export type QueryResourceInput = Record<string, unknown> & {
   id: number | string;
 };
 
-export type UseQueryOptions<T> = Parameters<typeof useQuery<T>>[0];
-
 export type UseQueryResourceInput = {
   collectionName: string;
   input: QueryResourceInput;
 };
 
-export type UseQueryResourceOptions<T> = T & Partial<UseQueryOptions<T>>;
+export type UseQueryResourceOptions<T> = UseQueryOptions<T>;
 
 export function useQueryResource<TQueryFnData>(
   { collectionName, input }: UseQueryResourceInput,
