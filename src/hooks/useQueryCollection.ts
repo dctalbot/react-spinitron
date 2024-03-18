@@ -1,30 +1,28 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import {
+  UseInfiniteQueryOptions,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 import { useBaseURL } from "../provider/ApiProvider";
 import { buildQueryString } from "../util/buildQueryString";
 import { components } from "../openapi-types";
 
 export type BaseIndexResponse = components["schemas"]["BaseIndexResponse"];
 
-export type UseInfiniteQueryOptions<T> = Parameters<
-  typeof useInfiniteQuery<T>
->[0];
-
 export interface UseQueryCollectionInput {
   collectionName: string;
   input?: Record<string, unknown>;
 }
 
-export type UseQueryCollectionOptions<T> = T &
-  Partial<UseInfiniteQueryOptions<T>>;
+export type UseQueryCollectionOptions<T> = UseInfiniteQueryOptions<T>;
 
-export function useQueryCollection<TQueryFnData>(
+export function useQueryCollection<TQueryFnData extends BaseIndexResponse>(
   { collectionName, input = {} }: UseQueryCollectionInput,
-  opts?: UseQueryCollectionOptions<TQueryFnData & BaseIndexResponse>,
+  opts?: UseQueryCollectionOptions<TQueryFnData>,
 ) {
   const base = useBaseURL();
   const s = buildQueryString(input);
 
-  return useInfiniteQuery<TQueryFnData & BaseIndexResponse>({
+  return useInfiniteQuery({
     queryKey: [collectionName, input],
     queryFn: async ({ pageParam }) => {
       let url = `${base}/${collectionName}?page=${pageParam}`;
