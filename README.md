@@ -35,9 +35,18 @@ function App() {
 import { useSpins } from "@dctalbot/react-spinitron";
 
 export function MyComponent() {
-  // get Spins for Playlist #123 every 10 seconds
+  // GET Spins for Playlist #123 every 10 seconds
   const { data, error, isFetching } = useSpins(
-    { playlist_id: 123 },
+    {
+      playlist_id: 123,
+      // start?: string;
+      // end?: string;
+      // show_id?: number;
+      // count?: number;
+      // page?: number;
+      // fields?: string[];
+      // expand?: string[];
+    },
     { refetchInterval: 10000 },
   );
 
@@ -60,14 +69,14 @@ export function MyComponent() {
 
 Hooks include:
 
-- `usePersona(requestParams, queryOptions)`
-- `usePersonas(requestParams, queryOptions)`
-- `usePlaylist(requestParams, queryOptions)`
-- `usePlaylists(requestParams, queryOptions)`
-- `useShow(requestParams, queryOptions)`
-- `useShows(requestParams, queryOptions)`
-- `useSpin(requestParams, queryOptions)`
-- `useSpins(requestParams, queryOptions)`
+- `usePersona(params, options)`
+- `usePersonas(params, options)`
+- `usePlaylist(params, options)`
+- `usePlaylists(params, options)`
+- `useShow(params, options)`
+- `useShows(params, options)`
+- `useSpin(params, options)`
+- `useSpins(params, options)`
 
 ## Related Projects
 
