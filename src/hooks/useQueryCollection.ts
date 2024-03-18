@@ -13,7 +13,7 @@ export interface UseQueryCollectionInput {
   input?: Record<string, unknown>;
 }
 
-export type UseQueryCollectionOptions<T> = UseInfiniteQueryOptions<T>;
+export type UseQueryCollectionOptions<T> = Partial<UseInfiniteQueryOptions<T>>;
 
 export function useQueryCollection<TQueryFnData extends BaseIndexResponse>(
   { collectionName, input = {} }: UseQueryCollectionInput,

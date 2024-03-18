@@ -11,7 +11,7 @@ export type UseQueryResourceInput = {
   input: QueryResourceInput;
 };
 
-export type UseQueryResourceOptions<T> = UseQueryOptions<T>;
+export type UseQueryResourceOptions<T> = Partial<UseQueryOptions<T>>;
 
 export function useQueryResource<TQueryFnData>(
   { collectionName, input }: UseQueryResourceInput,
