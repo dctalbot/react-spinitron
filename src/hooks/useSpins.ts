@@ -4,21 +4,20 @@ import {
   useQueryCollection,
 } from "./useQueryCollection";
 
-type SpinsQueryInput = NonNullable<
+export type SpinsData =
+  paths["/spins"]["get"]["responses"]["200"]["content"]["application/json"];
+
+export type UseSpinsInput = NonNullable<
   paths["/spins"]["get"]["parameters"]["query"]
 >;
 
-type SpinsQueryData =
-  paths["/spins"]["get"]["responses"]["200"]["content"]["application/json"];
+export type UseSpinsOptions = UseQueryCollectionOptions<SpinsData>;
 
-export function useSpins(
-  input?: SpinsQueryInput,
-  opts?: UseQueryCollectionOptions<SpinsQueryData>,
-) {
-  return useQueryCollection<SpinsQueryData>(
+export function useSpins(input?: UseSpinsInput, opts?: UseSpinsOptions) {
+  return useQueryCollection<SpinsData>(
     {
       collectionName: "spins",
-      input: input,
+      input,
     },
     opts,
   );

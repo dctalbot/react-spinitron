@@ -1,21 +1,23 @@
 import { paths } from "../openapi-types";
 import { UseQueryResourceOptions, useQueryResource } from "./useQueryResource";
 
-type PlaylistQueryInput =
+export type PlaylistData =
+  paths["/playlists/{id}"]["get"]["responses"]["200"]["content"]["application/json"];
+
+export type UsePlaylistInput =
   paths["/playlists/{id}"]["get"]["parameters"]["path"] &
     NonNullable<paths["/playlists/{id}"]["get"]["parameters"]["query"]>;
 
-type PlaylistQueryData =
-  paths["/playlists/{id}"]["get"]["responses"]["200"]["content"]["application/json"];
+export type UsePlaylistOptions = UseQueryResourceOptions<PlaylistData>;
 
 export function usePlaylist(
-  input: PlaylistQueryInput,
-  opts?: UseQueryResourceOptions<PlaylistQueryData>,
+  input: UsePlaylistInput,
+  opts?: UsePlaylistOptions,
 ) {
-  return useQueryResource<PlaylistQueryData>(
+  return useQueryResource<PlaylistData>(
     {
       collectionName: "playlists",
-      input: input,
+      input,
     },
     opts,
   );

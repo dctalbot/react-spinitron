@@ -2,11 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useBaseURL } from "../provider/ApiProvider";
 import { buildQueryString } from "../util/buildQueryString";
 
-type QueryResourceInput = Record<string, unknown> & { id: number | string };
+export type QueryResourceInput = Record<string, unknown> & {
+  id: number | string;
+};
 
-type UseQueryOptions<T> = Parameters<typeof useQuery<T>>[0];
+export type UseQueryOptions<T> = Parameters<typeof useQuery<T>>[0];
 
-type useQueryResourceInput = {
+export type UseQueryResourceInput = {
   collectionName: string;
   input: QueryResourceInput;
 };
@@ -14,7 +16,7 @@ type useQueryResourceInput = {
 export type UseQueryResourceOptions<T> = T & Partial<UseQueryOptions<T>>;
 
 export function useQueryResource<TQueryFnData>(
-  { collectionName, input }: useQueryResourceInput,
+  { collectionName, input }: UseQueryResourceInput,
   opts?: UseQueryResourceOptions<TQueryFnData>,
 ) {
   const base = useBaseURL();

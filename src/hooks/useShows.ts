@@ -4,21 +4,20 @@ import {
   useQueryCollection,
 } from "./useQueryCollection";
 
-type ShowsQueryInput = NonNullable<
+export type ShowsData =
+  paths["/shows"]["get"]["responses"]["200"]["content"]["application/json"];
+
+export type UseShowsInput = NonNullable<
   paths["/shows"]["get"]["parameters"]["query"]
 >;
 
-export type ShowsQueryData =
-  paths["/shows"]["get"]["responses"]["200"]["content"]["application/json"];
+export type UseShowsOptions = UseQueryCollectionOptions<ShowsData>;
 
-export function useShows(
-  input: ShowsQueryInput = {},
-  opts?: UseQueryCollectionOptions<ShowsQueryData>,
-) {
-  return useQueryCollection<ShowsQueryData>(
+export function useShows(input: UseShowsInput, opts?: UseShowsOptions) {
+  return useQueryCollection<ShowsData>(
     {
       collectionName: "shows",
-      input: input,
+      input,
     },
     opts,
   );

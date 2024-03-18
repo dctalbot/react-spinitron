@@ -3,11 +3,13 @@ import { useBaseURL } from "../provider/ApiProvider";
 import { buildQueryString } from "../util/buildQueryString";
 import { components } from "../openapi-types";
 
-type BaseIndexResponse = components["schemas"]["BaseIndexResponse"];
+export type BaseIndexResponse = components["schemas"]["BaseIndexResponse"];
 
-type UseInfiniteQueryOptions<T> = Parameters<typeof useInfiniteQuery<T>>[0];
+export type UseInfiniteQueryOptions<T> = Parameters<
+  typeof useInfiniteQuery<T>
+>[0];
 
-interface useQueryCollectionInput {
+export interface UseQueryCollectionInput {
   collectionName: string;
   input?: Record<string, unknown>;
 }
@@ -16,7 +18,7 @@ export type UseQueryCollectionOptions<T> = T &
   Partial<UseInfiniteQueryOptions<T>>;
 
 export function useQueryCollection<TQueryFnData>(
-  { collectionName, input = {} }: useQueryCollectionInput,
+  { collectionName, input = {} }: UseQueryCollectionInput,
   opts?: UseQueryCollectionOptions<TQueryFnData & BaseIndexResponse>,
 ) {
   const base = useBaseURL();

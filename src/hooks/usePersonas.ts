@@ -4,21 +4,23 @@ import {
   useQueryCollection,
 } from "./useQueryCollection";
 
-type PersonasQueryInput = NonNullable<
+export type PersonasData =
+  paths["/personas"]["get"]["responses"]["200"]["content"]["application/json"];
+
+export type UsePersonasInput = NonNullable<
   paths["/personas"]["get"]["parameters"]["query"]
 >;
 
-type PersonasQueryData =
-  paths["/personas"]["get"]["responses"]["200"]["content"]["application/json"];
+export type UsePersonasOptions = UseQueryCollectionOptions<PersonasData>;
 
 export function usePersonas(
-  input?: PersonasQueryInput,
-  opts?: UseQueryCollectionOptions<PersonasQueryData>,
+  input?: UsePersonasInput,
+  opts?: UsePersonasOptions,
 ) {
-  return useQueryCollection<PersonasQueryData>(
+  return useQueryCollection<PersonasData>(
     {
       collectionName: "personas",
-      input: input,
+      input,
     },
     opts,
   );
